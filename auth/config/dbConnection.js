@@ -1,8 +1,12 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 
+dotenv.config();
 
-const Connection = mongoose.connect('mongodb://localhost:27017/testdatabase').then(()=>{
-    console.log("Connected to the Database")
-})
+const mongourl = process.env.DataBaseConfig
 
-export default Connection
+const Connection = mongoose.connect(mongourl).then(() => {
+  console.log("Connected to the Database");
+});
+
+export default Connection;
