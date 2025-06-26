@@ -3,9 +3,9 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const mongourl = process.env.DataBaseConfig
+const mongouri = process.env.DataBaseConfig
 
-const Connection = mongoose.connect(mongourl).then(() => {
+const Connection = mongoose.connect(mongouri).then(() => {
   console.log("Connected to the Database");
 });
 
