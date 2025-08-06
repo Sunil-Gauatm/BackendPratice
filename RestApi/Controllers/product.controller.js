@@ -42,25 +42,32 @@ export const ProductContoller = {
         }
 
     },
-    editProductByID : async ( req , res) => {
+    editProductByID: async (req, res) => {
         try {
-            const {id} = req.params
+            const { id } = req.params
             const updates = req.body
             const EditProduct = await ProductModel.findByIdAndUpdate(
-                id, 
+                id,
                 updates,
-                {new : true}
+                { new: true }
 
             )
+            return res.status(200).json({ message: "Product Updated Sucessfully", Product: EditProduct })
 
-            return res.status(200).json({message : "Product Updated Sucessfully" , Product : EditProduct})
 
-            
         } catch (error) {
-            return res.status(500).json({message : "Internal Server Error" , error : error.message})
+            return res.status(500).json({ message: "Internal Server Error", error: error.message })
+        }
+    },
+    deleteProductByID: async (req, res) => {
+        try {
+            const { id } = req.params
+
+            const deletedProduct = await ProductModel.deleteProductByID(id)
+            return res.status(200).json({ message: "Product Deleted Sucessfully", Product: deletedProduct })
+        } catch (error) {
+            return res.status(500).json({ message: "Internal Server Error", error: error.message })
         }
     }
-
-
 
 }

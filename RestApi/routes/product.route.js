@@ -11,6 +11,7 @@ router.get('/all', ProductContoller.getAllProduct);
 router.get('/:id', ProductContoller.getProductByid);
 router.post('/create', ProductContoller.createProduct);
 router.patch('/edit/:id', ProductContoller.editProductByID )
+router.delete('/delete/:id', ProductContoller.deleteProductByID)
 
 
 
